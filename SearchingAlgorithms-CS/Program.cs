@@ -12,7 +12,7 @@ namespace SearchingAlgorithms_CS
 
         {
            
-            demoBinarySearch();
+            DemoBinarySearch2();
 
         }
 
@@ -109,6 +109,39 @@ namespace SearchingAlgorithms_CS
 
             Console.WriteLine(found);
 
+        }
+
+        static void DemoBinarySearch2() //Can be written in main code for finding a string
+            // A very common misconception is that strings can't be found using binary search
+            // this is not the case, it must be storted in alphabetical order (case matters)
+        {
+            string[] array = { "apple", "banana", "pear", "pineapple", "plum" };
+            string wordToFind;
+            bool found = false;
+            Console.Write("Enter word to find: ");
+            wordToFind = Console.ReadLine();
+            int start, end, mid;
+            start = 0;
+            end = array.Length - 1;
+            do
+            {
+                mid = (start + end) / 2;
+                if (array[mid] == wordToFind)
+                {
+                    found = true;
+                }
+                else if (string.Compare(wordToFind, array[mid])==1)
+                {
+
+                    start = mid + 1;
+                }
+                else
+                {
+                    end = mid - 1;
+                }
+            } while (start < end && !found);
+
+            Console.WriteLine(found);
         }
 
 
