@@ -130,9 +130,8 @@ namespace SearchingAlgorithms_CS
                 {
                     found = true;
                 }
-                else if (string.Compare(wordToFind, array[mid])==1)
+                else if (string.Compare(wordToFind, array[mid])==1) // in C# string.Compare produces (0 if the same, 1 if first is greater than second, -1 if second greater than first)
                 {
-
                     start = mid + 1;
                 }
                 else
@@ -143,7 +142,68 @@ namespace SearchingAlgorithms_CS
 
             Console.WriteLine(found);
         }
+        static int BinarySearchPositionFunction(string[] array, string wordToFind)
+        {
 
+            // A very common misconception is that strings can't be found using binary search
+            // this is not the case, it must be storted in alphabetical order (case matters)
+            {
+              
+                bool found = false;
+                Console.Write("Enter word to find: ");
+                wordToFind = Console.ReadLine();
+                int start, end, mid;
+                start = 0;
+                end = array.Length - 1;
+                do
+                {
+                    mid = (start + end) / 2;
+                    if (array[mid] == wordToFind)
+                    {
+                        return mid;
+                    }
+                    else if (string.Compare(wordToFind, array[mid]) == 1) // in C# string.Compare produces (0 if the same, 1 if first is greater than second, -1 if second greater than first)
+                    {
+                        start = mid + 1;
+                    }
+                    else
+                    {
+                        end = mid - 1;
+                    }
+                } while (start < end && !found);
+
+                return -1;
+            }
+
+        }
+        static bool BinarySearchReturnFound(int[] array, int numToFind)
+        {
+            bool found = false;
+            Console.Write("Enter a number to find: ");
+            numToFind = Convert.ToInt32(Console.ReadLine());
+            int start, end, mid;
+            start = 0;
+            end = array.Length - 1;
+            do
+            {
+                mid = (start + end) / 2;
+                if (array[mid] == numToFind)
+                {
+                    found = true;
+                    return found;
+                }
+                else if (numToFind > array[mid])
+                {
+
+                    start = mid + 1;
+                }
+                else
+                {
+                    end = mid - 1;
+                }
+            } while (start < end && !found);
+            return found;
+        }
 
     }
 }
