@@ -9,7 +9,11 @@ namespace SearchingAlgorithms_CS
     internal class Program
     {
         static void Main(string[] args)
+
         {
+           
+            demoBinarySearch();
+
         }
 
         static void demoLinearSearch() // demo linear search, can be written in main code - looks for a number
@@ -74,6 +78,37 @@ namespace SearchingAlgorithms_CS
                 }
             }
             return false;
+        }
+
+        static void demoBinarySearch() //Can be written in main code to find a number in a number array
+        {
+            int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int numToFind;
+            bool found = false;
+            Console.Write("Enter a number to find: ");
+            numToFind = Convert.ToInt32(Console.ReadLine());
+            int start, end, mid;
+            start = 0;
+            end = array.Length - 1;
+            do
+            {
+                mid = (start + end) / 2;
+                if (array[mid] == numToFind)
+                {
+                    found = true;
+                }else if ( numToFind > array[mid])
+                {
+                  
+                    start = mid+1;
+                }
+                else
+                {
+                    end = mid - 1;
+                }
+               }while (start < end && !found);
+
+            Console.WriteLine(found);
+
         }
 
 
