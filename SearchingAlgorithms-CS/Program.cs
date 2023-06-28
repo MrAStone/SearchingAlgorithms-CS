@@ -62,6 +62,19 @@ namespace SearchingAlgorithms_CS
             return -1;
 
         }
+        //Function which returns true/false if string is in array
+        static bool FindIfValuePresent(string value, string[] array)
+        {
+            int index = 0;
+            while (index < array.Length)
+            {
+                if (array[index] == value)
+                {
+                    return true;    
+                }
+            }
+            return false;
+        }
 
 
     }
